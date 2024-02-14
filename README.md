@@ -1,5 +1,7 @@
 # take-flight
  Unity SDK Starter Template - Embedded Wallets, Smart Wallets and Custom Contract Interactions.
+ 
+![takeflight](https://github.com/thirdweb-example/take-flight/assets/43042585/bd207d4b-9223-479d-a664-31cb96be03f1)
 
 Contains a single scene:
 - `00_Scene_Main`: Contains all game and blockchain elements, including onboarding flow. Blockchain elements are mostly managed in the `BlockchainManager`.
