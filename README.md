@@ -7,10 +7,16 @@ Unity SDK Template showcasing how to do a seamless onboarding experience for use
 - Custom Contract Interactions
 - Supports WebGL, Standalone
 
+## Notes
+
 Contains a single scene:
 - `00_Scene_Main`: Contains all game and blockchain elements, including onboarding flow. Blockchain elements are mostly managed in the `BlockchainManager`.
 
-Test in WebGL here: https://thirdweb-example.github.io/take-flight/
+
+Platforms supported: WebGL, Standalone.
+
+Test in WebGL here: https://thirdweb-example.github.io/unity-take-flight/
+
 
  ## Setup Instructions
  1. Clone this repository.
