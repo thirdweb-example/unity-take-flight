@@ -1,12 +1,14 @@
-# take-flight
- Unity SDK Starter Template - Embedded Wallets, Smart Wallets and Custom Contract Interactions.
- 
-![takeflight](https://github.com/thirdweb-example/take-flight/assets/43042585/bd207d4b-9223-479d-a664-31cb96be03f1)
+# unity-take-flight
+Unity SDK Template showcasing how to do a seamless onboarding experience for users using social logins and the ability to submit your score on-chain. 
+
+## Features
+- Embedded Wallets
+- Smart Wallets
+- Custom Contract Interactions
+- Supports WebGL, Standalone
 
 Contains a single scene:
 - `00_Scene_Main`: Contains all game and blockchain elements, including onboarding flow. Blockchain elements are mostly managed in the `BlockchainManager`.
-
-Platforms supported: WebGL, Standalone.
 
 Test in WebGL here: https://thirdweb-example.github.io/take-flight/
 
@@ -19,4 +21,31 @@ Test in WebGL here: https://thirdweb-example.github.io/take-flight/
  6. Find your `ThirdwebManager` in `00_Scene_Main` and set the client id there.
  7. Press Play!
 
-To build the game, make sure you follow our build instructions [here](https://github.com/thirdweb-dev/unity-sdk#build).
+## Screenshots
+
+![Login page](https://github.com/thirdweb-example/unity-take-flight/assets/57885104/0dc97972-2d66-4716-8385-81a90d29d00f)
+
+![In-game Screenshot](https://github.com/thirdweb-example/unity-take-flight/assets/57885104/08500a58-7513-42c1-9b53-666908b5feca)
+
+![Game over screen](https://github.com/thirdweb-example/unity-take-flight/assets/57885104/a7c75ba1-6d27-40c2-8440-bd61154c883b)
+
+
+
+
+## Documentation
+
+- To build the game, follow the [build instructions](https://github.com/thirdweb-dev/unity-sdk#build)
+- Learn more from the [Unity SDK Documentation](https://portal.thirdweb.com/unity)
+
+
+## Contributing
+
+Contributions are always welcome! See our [open source page](https://thirdweb.com/open-source) for more information. 
+
+
+## Support 
+
+For help or feedback, please [visit our support site](https://thirdweb.com/support)
+
+
+
