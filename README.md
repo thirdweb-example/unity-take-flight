@@ -8,7 +8,7 @@ Contains a single scene:
 
 Platforms supported: WebGL, Standalone.
 
-Test in WebGL here: https://thirdweb-example.github.io/take-flight/
+Test in WebGL here: https://thirdweb-example.github.io/unity-take-flight/
 
  ## Setup Instructions
  1. Clone this repository.
