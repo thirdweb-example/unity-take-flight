@@ -7,7 +7,7 @@ Unity SDK Template showcasing how to do a seamless onboarding experience for use
 - Custom Contract Interactions
 - Supports WebGL, Standalone
 
-## Notes
+## Scenes
 
 Contains a single scene:
 - `00_Scene_Main`: Contains all game and blockchain elements, including onboarding flow. Blockchain elements are mostly managed in the `BlockchainManager`.
