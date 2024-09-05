@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Thirdweb;
+using Thirdweb.Unity;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class BlockchainManager : MonoBehaviour
 {
     public UnityEvent<string> OnLoggedIn;
 
+    public IThirdwebWallet Wallet { get; private set; }
     public string Address { get; private set; }
 
     public static BlockchainManager Instance { get; private set; }
@@ -43,14 +45,15 @@ public class BlockchainManager : MonoBehaviour
                 break;
         }
 
-        var connection = new WalletConnection(
-            provider: WalletProvider.SmartWallet,
+        var connection = new WalletOptions(
+            provider: WalletProvider.InAppWallet,
             chainId: 421614,
-            personalWallet: WalletProvider.EmbeddedWallet,
-            authOptions: new AuthOptions(authProvider: provider)
+            inAppWalletOptions: new InAppWalletOptions(authprovider: provider),
+            smartWalletOptions: new SmartWalletOptions(sponsorGas: true)
         );
 
-        Address = await ThirdwebManager.Instance.SDK.wallet.Connect(connection);
+        Wallet = await ThirdwebManager.Instance.ConnectWallet(connection);
+        Address = await Wallet.GetAddress();
 
         OnLoggedIn?.Invoke(Address);
     }
@@ -58,17 +61,19 @@ public class BlockchainManager : MonoBehaviour
     internal async Task SubmitScore(float distanceTravelled)
     {
         Debug.Log($"Submitting score of {distanceTravelled} to blockchain for address {Address}");
-        var contract = ThirdwebManager.Instance.SDK.GetContract(
+        var contract = await ThirdwebManager.Instance.GetContract(
             "0x9d9a1f4c1a685857a5666db45588aa3d5643af9f",
+            421614,
             "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"score\",\"type\":\"uint256\"}],\"name\":\"ScoreAdded\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"}],\"name\":\"getRank\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"rank\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"score\",\"type\":\"uint256\"}],\"name\":\"submitScore\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"
         );
-        await contract.Write("submitScore", (int)distanceTravelled);
+        await contract.Write(Wallet, "submitScore", 0, (int)distanceTravelled);
     }
 
     internal async Task<int> GetRank()
     {
-        var contract = ThirdwebManager.Instance.SDK.GetContract(
+        var contract = await ThirdwebManager.Instance.GetContract(
             "0x9d9a1f4c1a685857a5666db45588aa3d5643af9f",
+            421614,
             "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"score\",\"type\":\"uint256\"}],\"name\":\"ScoreAdded\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"player\",\"type\":\"address\"}],\"name\":\"getRank\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"rank\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"score\",\"type\":\"uint256\"}],\"name\":\"submitScore\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"
         );
         var rank = await contract.Read<int>("getRank", Address);
