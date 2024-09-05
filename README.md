@@ -2,7 +2,7 @@
 Unity SDK Template showcasing how to do a seamless onboarding experience for users using social logins and the ability to submit your score on-chain. 
 
 ## Features
-- Embedded Wallets
+- In-App Wallets
 - Smart Wallets
 - Custom Contract Interactions
 - Supports WebGL, Standalone
@@ -23,7 +23,7 @@ Test in WebGL here: https://thirdweb-example.github.io/unity-take-flight/
  2. Open in Unity 2022.3.17f1
  3. Create a [thirdweb api key](https://thirdweb.com/create-api-key)
  4. Make sure `com.thirdweb.takeflight` is an allowlisted bundle id for your API key, and enable Smart Wallets.
- 5. If testing in WebGL, set allowlisted domains to `*` or to your localhost url. (Note: known issue - you may need to host your WebGL build on something like github pages for Embedded Wallets to work properly temporarily)
+ 5. If testing in WebGL, set allowlisted domains to `*` or to your localhost url.
  6. Find your `ThirdwebManager` in `00_Scene_Main` and set the client id there.
  7. Press Play!
 
@@ -40,8 +40,8 @@ Test in WebGL here: https://thirdweb-example.github.io/unity-take-flight/
 
 ## Documentation
 
-- To build the game, follow the [build instructions](https://github.com/thirdweb-dev/unity-sdk#build)
-- Learn more from the [Unity SDK Documentation](https://portal.thirdweb.com/unity)
+- To build the game, follow the [build instructions](https://github.com/thirdweb-dev/unity-sdk?tab=readme-ov-file#build-instructions)
+- Learn more from the [Unity SDK Documentation](https://portal.thirdweb.com/unity/v5)
 
 
 ## Contributing
